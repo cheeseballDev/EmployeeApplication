@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel1 = new Panel();
             textBoxPosition = new RichTextBox();
             label4 = new Label();
@@ -38,19 +39,17 @@
             textBoxEmployeeId = new RichTextBox();
             label1 = new Label();
             label2 = new Label();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            listBoxEmployeeIds = new ListBox();
-            listBoxFirstNames = new ListBox();
-            listBoxLastNames = new ListBox();
-            listBoxPositions = new ListBox();
             panel2 = new Panel();
             buttonReset = new Button();
-            buttonRemovePrevious = new Button();
+            buttonRemoveSelected = new Button();
             pictureBox2 = new PictureBox();
+            panel3 = new Panel();
+            dataGridViewEmployeeDatabase = new DataGridView();
             panel1.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewEmployeeDatabase).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -167,77 +166,10 @@
             label2.TabIndex = 3;
             label2.Text = "First Name";
             // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.ColumnCount = 4;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 181F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 178F));
-            tableLayoutPanel1.Controls.Add(listBoxEmployeeIds, 0, 0);
-            tableLayoutPanel1.Controls.Add(listBoxFirstNames, 1, 0);
-            tableLayoutPanel1.Controls.Add(listBoxLastNames, 2, 0);
-            tableLayoutPanel1.Controls.Add(listBoxPositions, 3, 0);
-            tableLayoutPanel1.Location = new Point(14, 128);
-            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 12.2676582F));
-            tableLayoutPanel1.Size = new Size(754, 233);
-            tableLayoutPanel1.TabIndex = 1;
-            // 
-            // listBoxEmployeeIds
-            // 
-            listBoxEmployeeIds.BackColor = Color.LightCyan;
-            listBoxEmployeeIds.Font = new Font("Comic Mono", 12F);
-            listBoxEmployeeIds.FormattingEnabled = true;
-            listBoxEmployeeIds.ItemHeight = 17;
-            listBoxEmployeeIds.Location = new Point(3, 2);
-            listBoxEmployeeIds.Margin = new Padding(3, 2, 3, 2);
-            listBoxEmployeeIds.Name = "listBoxEmployeeIds";
-            listBoxEmployeeIds.Size = new Size(191, 225);
-            listBoxEmployeeIds.TabIndex = 0;
-            // 
-            // listBoxFirstNames
-            // 
-            listBoxFirstNames.BackColor = Color.LightCyan;
-            listBoxFirstNames.Font = new Font("Comic Mono", 12F);
-            listBoxFirstNames.FormattingEnabled = true;
-            listBoxFirstNames.ItemHeight = 17;
-            listBoxFirstNames.Location = new Point(200, 2);
-            listBoxFirstNames.Margin = new Padding(3, 2, 3, 2);
-            listBoxFirstNames.Name = "listBoxFirstNames";
-            listBoxFirstNames.Size = new Size(175, 225);
-            listBoxFirstNames.TabIndex = 1;
-            // 
-            // listBoxLastNames
-            // 
-            listBoxLastNames.BackColor = Color.LightCyan;
-            listBoxLastNames.Font = new Font("Comic Mono", 12F);
-            listBoxLastNames.FormattingEnabled = true;
-            listBoxLastNames.ItemHeight = 17;
-            listBoxLastNames.Location = new Point(381, 2);
-            listBoxLastNames.Margin = new Padding(3, 2, 3, 2);
-            listBoxLastNames.Name = "listBoxLastNames";
-            listBoxLastNames.Size = new Size(191, 225);
-            listBoxLastNames.TabIndex = 2;
-            // 
-            // listBoxPositions
-            // 
-            listBoxPositions.BackColor = Color.LightCyan;
-            listBoxPositions.Font = new Font("Comic Mono", 12F);
-            listBoxPositions.FormattingEnabled = true;
-            listBoxPositions.ItemHeight = 17;
-            listBoxPositions.Location = new Point(578, 2);
-            listBoxPositions.Margin = new Padding(3, 2, 3, 2);
-            listBoxPositions.Name = "listBoxPositions";
-            listBoxPositions.Size = new Size(171, 225);
-            listBoxPositions.TabIndex = 3;
-            // 
             // panel2
             // 
             panel2.Controls.Add(buttonReset);
-            panel2.Controls.Add(buttonRemovePrevious);
+            panel2.Controls.Add(buttonRemoveSelected);
             panel2.Location = new Point(196, 365);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
@@ -257,18 +189,18 @@
             buttonReset.UseVisualStyleBackColor = false;
             buttonReset.Click += buttonReset_Click;
             // 
-            // buttonRemovePrevious
+            // buttonRemoveSelected
             // 
-            buttonRemovePrevious.BackColor = Color.LightCyan;
-            buttonRemovePrevious.Font = new Font("Comic Mono", 12F);
-            buttonRemovePrevious.Location = new Point(16, 7);
-            buttonRemovePrevious.Margin = new Padding(3, 2, 3, 2);
-            buttonRemovePrevious.Name = "buttonRemovePrevious";
-            buttonRemovePrevious.Size = new Size(176, 28);
-            buttonRemovePrevious.TabIndex = 1;
-            buttonRemovePrevious.Text = "REMOVE PREVIOUS";
-            buttonRemovePrevious.UseVisualStyleBackColor = false;
-            buttonRemovePrevious.Click += buttonRemovePrevious_Click;
+            buttonRemoveSelected.BackColor = Color.LightCyan;
+            buttonRemoveSelected.Font = new Font("Comic Mono", 12F);
+            buttonRemoveSelected.Location = new Point(16, 7);
+            buttonRemoveSelected.Margin = new Padding(3, 2, 3, 2);
+            buttonRemoveSelected.Name = "buttonRemoveSelected";
+            buttonRemoveSelected.Size = new Size(176, 28);
+            buttonRemoveSelected.TabIndex = 1;
+            buttonRemoveSelected.Text = "REMOVE SELECTED";
+            buttonRemoveSelected.UseVisualStyleBackColor = false;
+            buttonRemoveSelected.Click += buttonRemovePrevious_Click;
             // 
             // pictureBox2
             // 
@@ -279,15 +211,41 @@
             pictureBox2.TabIndex = 4;
             pictureBox2.TabStop = false;
             // 
+            // panel3
+            // 
+            panel3.Controls.Add(dataGridViewEmployeeDatabase);
+            panel3.Location = new Point(11, 137);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(756, 217);
+            panel3.TabIndex = 5;
+            // 
+            // dataGridViewEmployeeDatabase
+            // 
+            dataGridViewEmployeeDatabase.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewEmployeeDatabase.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewEmployeeDatabase.BackgroundColor = Color.LightCyan;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Comic Mono", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewEmployeeDatabase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewEmployeeDatabase.Location = new Point(0, 3);
+            dataGridViewEmployeeDatabase.Name = "dataGridViewEmployeeDatabase";
+            dataGridViewEmployeeDatabase.Size = new Size(753, 211);
+            dataGridViewEmployeeDatabase.TabIndex = 0;
+            // 
             // fromEmployeeDatabase
             // 
             AutoScaleDimensions = new SizeF(7F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AntiqueWhite;
             ClientSize = new Size(985, 416);
+            Controls.Add(panel3);
             Controls.Add(pictureBox2);
             Controls.Add(panel2);
-            Controls.Add(tableLayoutPanel1);
             Controls.Add(panel1);
             Font = new Font("Comic Mono", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(3, 2, 3, 2);
@@ -295,24 +253,20 @@
             Text = "Employee Database";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            tableLayoutPanel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewEmployeeDatabase).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
-        private TableLayoutPanel tableLayoutPanel1;
         private Label label1;
-        private ListBox listBoxEmployeeIds;
-        private ListBox listBoxFirstNames;
-        private ListBox listBoxLastNames;
-        private ListBox listBoxPositions;
         private Panel panel2;
         private Button buttonReset;
-        private Button buttonRemovePrevious;
+        private Button buttonRemoveSelected;
         private Button buttonSubmitEmployee;
         private Label label4;
         private RichTextBox textBoxLastName;
@@ -322,5 +276,7 @@
         private RichTextBox textBoxEmployeeId;
         private RichTextBox textBoxPosition;
         private PictureBox pictureBox2;
+        private Panel panel3;
+        private DataGridView dataGridViewEmployeeDatabase;
     }
 }

@@ -1,3 +1,4 @@
+using System.Data;
 using System.Reflection.Metadata.Ecma335;
 using System.Windows.Forms;
 using EmployeeNamespace;
@@ -5,10 +6,23 @@ namespace EmployeeApplication
 {
     public partial class fromEmployeeDatabase : Form
     {
+
+        private DataTable table;
         public fromEmployeeDatabase()
         {
+            table = new DataTable();
+
+            table.Columns.Add("Employee ID", typeof(string));
+            table.Columns.Add("First Name", typeof(string));
+            table.Columns.Add("Last Name", typeof(string));
+            table.Columns.Add("Position", typeof(string));
+
             InitializeComponent();
+
+            dataGridViewEmployeeDatabase.DataSource = table;
+
         }
+
 
         private void buttonSubmitEmployee_Click(object sender, EventArgs e)
         {
@@ -51,10 +65,8 @@ namespace EmployeeApplication
                     ? new Employee(parsedId, employeeFirstName, employeeLastName)
                     : new Employee(parsedId, employeeFirstName, employeeLastName, employeePosition));
 
-            listBoxEmployeeIds.Items.Add(employeeObj.id);
-            listBoxFirstNames.Items.Add(employeeObj.firstName);
-            listBoxLastNames.Items.Add(employeeObj.lastName);
-            listBoxPositions.Items.Add(employeeObj.position);
+            table.Rows.Add(employeeObj.id, employeeObj.firstName, employeeObj.lastName, employeeObj.position);
+
             clearTextBox();
             return;
         }
@@ -69,21 +81,22 @@ namespace EmployeeApplication
 
         private void buttonRemovePrevious_Click(object sender, EventArgs e)
         {
-            for (int i = listBoxEmployeeIds.Items.Count - 1; i >= 0; --i)
+            if (dataGridViewEmployeeDatabase.CurrentCell != null)
             {
-                listBoxEmployeeIds.Items.RemoveAt(i);
-                listBoxFirstNames.Items.RemoveAt(i);
-                listBoxLastNames.Items.RemoveAt(i);
-                listBoxPositions.Items.RemoveAt(i);
+                int selectedIndex = dataGridViewEmployeeDatabase.CurrentCell.RowIndex;
+                if (selectedIndex > -1)
+                {
+                    dataGridViewEmployeeDatabase.Rows.RemoveAt(selectedIndex);
+                    dataGridViewEmployeeDatabase.Refresh();
+                    return;
+                }
             }
+            MessageBox.Show("No selected rows", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void buttonReset_Click(object sender, EventArgs e)
         {
-            listBoxEmployeeIds.Items.Clear();
-            listBoxFirstNames.Items.Clear();
-            listBoxLastNames.Items.Clear();
-            listBoxPositions.Items.Clear();
+            dataGridViewEmployeeDatabase.DataSource = null;
         }
     }
 }
@@ -133,6 +146,7 @@ namespace EmployeeNamespace
         {
             Random random = new Random();
             return random.Next(100000, 999999);
-        }
+        }
+
     }
 }
